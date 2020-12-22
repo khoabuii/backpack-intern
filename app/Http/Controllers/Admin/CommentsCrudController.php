@@ -60,8 +60,7 @@ class CommentsCrudController extends CrudController
             'attribute'=>'title'
         ]);
         $this->crud->removeButton('create');
-        $this->crud->removeButton('delete');
-
+        $this->crud->removeButton('update');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

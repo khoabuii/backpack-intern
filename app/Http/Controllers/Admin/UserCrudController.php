@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Charts\WeeklyUsersChartController;
 use App\Http\Requests\UserRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -100,6 +101,11 @@ class UserCrudController extends CrudController
              'name'=>'email',
              'type'=>'email',
              'disabled'=>true
+         ]);
+
+         Widget::add([
+             'type'=>'chart',
+             'controller'=>WeeklyUsersChartController::class
          ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
