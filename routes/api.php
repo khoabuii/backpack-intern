@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// users
+Route::get('users','Api\UsersController@index');
+Route::get('users/{id}','Api\UsersController@show');
+
+// categories
+Route::apiResource('categories','Api\CategoriesController');
+
+//categories child
+Route::apiResource('categories_child','Api\CategoriesChildController');
+
+// posts
+Route::apiResource('posts','Api\PostsController');
