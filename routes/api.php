@@ -17,15 +17,27 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-// users
-Route::get('users','Api\UsersController@index');
-Route::get('users/{id}','Api\UsersController@show');
+// auth
+Route::group(['prefix'=>'auth'],function(){
+    Route::post('login','Api\ApiController@login');
+    Route::get('logout','Api\ApiController@logout');
 
-// categories
-Route::apiResource('categories','Api\CategoriesController');
+    Route::group(['middleware'=>'auth:api'],function (){
 
-//categories child
-Route::apiResource('categories_child','Api\CategoriesChildController');
+        // categories
+        Route::apiResource('categories','Api\CategoriesController');
 
-// posts
-Route::apiResource('posts','Api\PostsController');
+        // users
+        Route::get('users','Api\UsersController@index');
+        Route::get('users/{id}','Api\UsersController@show');
+
+
+        //categories child
+        Route::apiResource('categories_child','Api\CategoriesChildController');
+
+        // posts
+        Route::apiResource('posts','Api\PostsController');
+    });
+});
+
+

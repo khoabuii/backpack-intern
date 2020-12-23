@@ -7,6 +7,7 @@ use App\Http\Requests\CategoriesRequest;
 use App\Models\Categories;
 use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
 {
@@ -18,7 +19,12 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        return Categories::all();
+        try{
+            $pageSize=(int)$_GET['pageSize'];
+            return Categories::paginate($pageSize);
+        }catch (\Exception $e){
+            return Categories::paginate(5);
+        }
     }
 
     /**
@@ -31,7 +37,7 @@ class CategoriesController extends Controller
     {
         //
         $cate=Categories::create($request->all());
-       return \response()->json('Add category successfully');
+       return \response()->json($cate,200);
     }
 
     /**

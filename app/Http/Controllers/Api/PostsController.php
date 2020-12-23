@@ -16,8 +16,18 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts=Posts::all('id','title','image','summary','created_at','updated_at');
-        return response()->json($posts);
+        try{
+            $pageSize=(int)$_GET['pageSize'];
+            return Posts::paginate($pageSize);
+        }catch (\Exception $e){
+            return Posts::paginate(5);
+        }
+//        $pageSize=(int)$_GET['pageSize'];
+//        if(typeOf(pageSize)==='undefined'){
+//
+//            return Posts::all();
+//        }
+
     }
 
     /**
@@ -70,6 +80,9 @@ class PostsController extends Controller
     {
         //
         $post=Posts::destroy($id);
-        return response()->json('Post deleted id='.$id);
+        return response()->json(array([
+            'status'=>true,
+            'message'=>'Post deleted id='.$id
+        ]));
     }
 }

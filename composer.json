@@ -12,15 +12,18 @@
         "backpack/crud": "4.1.*",
         "backpack/filemanager": "^1.1",
         "backpack/langfilemanager": "^3.0",
+        "cloudcreativity/laravel-json-api": "^2.2",
         "consoletvs/charts": "6.*",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
         "laravel/framework": "^7.29",
+        "laravel/passport": "^9.4",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "backpack/generators": "^3.1",
+        "cloudcreativity/json-api-testing": "^3.2",
         "facade/ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
         "laracasts/generators": "^2.0",

@@ -99,7 +99,7 @@
                     <ul class="navbar-nav mr-2">
                         @if(!Auth::check())
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/logout')}}"><i class="fa fa-sign-up"></i>
+                            <a class="nav-link" href="{{url('/register')}}"><i class="fa fa-sign-up"></i>
                                  Register</a>
                         </li>
                         <li class="nav-item">

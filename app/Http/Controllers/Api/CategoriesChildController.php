@@ -17,8 +17,12 @@ class CategoriesChildController extends Controller
     public function index()
     {
         //
-        $cate=Categories_child::all();
-        return response()->json($cate);
+        try{
+            $pageSize=(int)$_GET['pageSize'];
+            return Categories_child::paginate($pageSize);
+        }catch (\Exception $e){
+            return Categories_child::paginate(5);
+        }
     }
 
     /**
@@ -51,7 +55,7 @@ class CategoriesChildController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -73,6 +77,9 @@ class CategoriesChildController extends Controller
     {
         //
         Categories_child::destroy($id);
-        return \response()->json('Deleted categories child id='.$id);
+        return response()->json(array([
+            'status'=>true,
+            'message'=>'Categories child deleted id='.$id
+        ]));
     }
 }
