@@ -31,7 +31,7 @@ class Posts extends Model
     |--------------------------------------------------------------------------
     */
     public function categoriesChild(){
-        return $this->belongsTo(Categories_child::class,'category_child','id');
+        return $this->belongsTo(CategoriesChild::class,'category_child','id');
     }
 
     /*

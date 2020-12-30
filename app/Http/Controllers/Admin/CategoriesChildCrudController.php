@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Categories_childRequest;
-use App\Models\Categories_child;
+use App\Http\Requests\CategoriesChildRequest;
+use App\Models\CategoriesChild;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class Categories_childCrudController extends CrudController
+class CategoriesChildCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -28,7 +28,7 @@ class Categories_childCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Categories_child::class);
+        CRUD::setModel(\App\Models\CategoriesChild::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/categories_child');
         CRUD::setEntityNameStrings('categories_child', 'categories_children');
         CRUD::setHeading('Danh mục con');
@@ -68,7 +68,7 @@ class Categories_childCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(Categories_childRequest::class);
+        CRUD::setValidation(CategoriesChildRequest::class);
 
 //        CRUD::setFromDb(); // fields
         CRUD::addField([
@@ -102,21 +102,4 @@ class Categories_childCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
-    // store
-//    protected function store(Request $request){
-//        $this->validate($request,[
-//            'name' => 'required|unique:categories_child,name|min:2|max:255',
-//            'cate'=>'required'
-//        ],[
-//            'name.required'=>'Bạn chưa nhập tên',
-//            'name.unique'=>'Tên danh mục bị trùng'
-//        ]);
-//
-//        $cate_child=new Categories_child();
-//        $cate_child->name=$request->name;
-//        $cate_child->cate=(int)$request->cate;
-//        dd($request->cate);
-//        $cate_child->save();
-//        return redirect()->back();
-//    }
 }

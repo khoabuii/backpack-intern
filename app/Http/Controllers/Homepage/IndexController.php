@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Homepage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\Categories;
-use App\Models\Categories_child;
+use App\Models\CategoriesChild;
 use App\Models\Comments;
 use App\Models\Posts;
 use App\Models\User;
@@ -21,7 +21,7 @@ class IndexController extends Controller
     public function  __construct()
     {
         $data['categories']=Categories::all();
-        $data['categories_child']=Categories_child::all();
+        $data['categories_child']=CategoriesChild::all();
         view()->share($data);
     }
 
@@ -41,7 +41,10 @@ class IndexController extends Controller
     }
     public function postLogin(Request $request){
         $input=$request->all();
-        Auth::attempt(['email'=>$input['email'],'password'=>$input['password']]);
+        $login=Auth::attempt(['email'=>$input['email'],'password'=>$input['password']]);
+        if(!$login){
+            return back()->with('errors','Đăng nhập sai');
+        }
         return redirect('/');
     }
 

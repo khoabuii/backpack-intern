@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Categories_child extends Model
+class CategoriesChild extends Model
 {
     use CrudTrait;
 

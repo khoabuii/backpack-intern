@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Charts;
 
 use App\Models\Categories;
-use App\Models\Categories_child;
+use App\Models\CategoriesChild;
 use App\Models\Posts;
 use App\Models\Tag;
 use App\Models\User;
@@ -45,14 +45,6 @@ class WeeklyUsersChartController extends ChartController
      */
      public function data()
      {
-//         $users_created_today = \App\User::whereDate('created_at', today())->count();
-
-//         $this->chart->dataset('Users Created', 'bar', [
-//                     $users_created_today,
-//                 ])
-//             ->color('rgba(205, 32, 31, 1)')
-//             ->backgroundColor('rgba(205, 32, 31, 0.4)');
-
          for ($days_backwards = 30; $days_backwards >= 0; $days_backwards--) {
              // Could also be an array_push if using an array rather than a collection.
              $users[] = User::whereDate('created_at', today()->subDays($days_backwards))
@@ -63,7 +55,7 @@ class WeeklyUsersChartController extends ChartController
                  ->count();
              $tags[] = Tag::whereDate('created_at', today()->subDays($days_backwards))
                  ->count();
-             $categories_child=Categories_child::whereDate('created_at',today()->subDay($days_backwards))->count();
+             $categories_child=CategoriesChild::whereDate('created_at',today()->subDay($days_backwards))->count();
          }
 
          $this->chart->dataset('Người dùng', 'line', $users)
