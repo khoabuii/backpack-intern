@@ -26,11 +26,15 @@ class IndexController extends Controller
 
     public function index(){
         $data['posts']=Posts::OrderBy('id','desc')->paginate(3);
+        $data['hot_posts']=Posts::where('hot_news',1)->paginate(5);
+        $data['special_posts']=Posts::where('special_news',1)->paginate(5);
         return view('index',$data);
     }
     public function viewPosts($id){
         $data['post']=Posts::findOrFail($id);
         $data['posts_list']=Posts::all()->take(5);
+        $data['hot_posts']=Posts::where('hot_news',1)->paginate(5);
+        $data['special_posts']=Posts::where('special_news',1)->paginate(5);
         $data['comments']=Comments::where('post_id',$id)->get();
 
         return view('view-post',$data);

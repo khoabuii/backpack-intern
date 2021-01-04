@@ -55,11 +55,26 @@ class PostsCrudController extends CrudController
             'type'=>'image',
             'name'=>'image'
         ]);
-//        CRUD::addColumn([
-//            'label'=>'Tóm tắt',
-//            'type'=>'text',
-//            'name'=>'summary'
-//        ]);
+        CRUD::addColumn([
+            'label'=>'Tin hot',
+            'type'=>'boolean',
+            'name'=>'hot_news',
+            'options'=>[
+                1=>'Có',
+                0=>'Không'
+            ]
+        ]);
+
+        CRUD::addColumn([
+            'label'=>'Tin đặc biệt',
+            'type'=>'boolean',
+            'name'=>'special_news',
+            'options'=>[
+                1=>'Có',
+                0=>'Không'
+            ]
+        ]);
+
         CRUD::addColumn(
             [
                 'label'     => 'Danh mục', // Table column heading
@@ -94,19 +109,25 @@ class PostsCrudController extends CrudController
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
+        CRUD::field('image')->type('browse')->label('Hình ảnh');
+        crud::field('summary')->type('textarea')->label('Tóm tắt');
+        CRUD::field('content')->type('ckeditor')->label('Nội dung');
+        CRUD::field('special_news')->label('Tin đặc biệt')->type('boolean');
 
-        CRUD::field('image')->type('browse');
-        crud::field('summary')->type('textarea');
-        CRUD::field('content')->type('ckeditor');
         $this->crud->addField([
-            'label' => 'Tên danh mục bài viết',
+            'label'=>'Tin hot',
+            'type'=>'boolean',
+            'name'=>'hot_news',
+            'default'=>0
+        ]);
+        $this->crud->addField([
+            'label' => 'Danh mục bài viết',
             'type' => 'select2',
             'name' => 'category',
             'entity'=>'categories',
             'attribute'=>'name',
         ]);
     }
-
     /**
      * Define what happens when the Update operation is loaded.
      *

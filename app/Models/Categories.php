@@ -20,7 +20,7 @@ class Categories extends Model
     protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name','is_active','parent_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

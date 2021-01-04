@@ -6,7 +6,7 @@ use App\Http\Requests\CategoriesRequest;
 use App\Models\Categories;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use http\Env\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -61,9 +61,7 @@ class CategoriesCrudController extends CrudController
                 2=>'Không hoạt động'
             ]
         ]);
-//        $parent = Categories::with('childrenRecursive')->whereNull('parent_id')->get();
-//         $child=Categories::with('parentRecursive')->where('id',4)->get();
-//        dd($child);
+
         CRUD::addColumn([
             'label'=>'Danh mục cha',
             'name'=>'parent_id',
@@ -88,13 +86,11 @@ class CategoriesCrudController extends CrudController
     protected function setupCreateOperation()
     {
         $this->crud->setSubheading('Tạo danh mục');
-        CRUD::setValidation(CategoriesRequest::class);
-
-//        CRUD::setFromDb(); // fields
+        if(\Request::url('/admin/categories/create'))
+            CRUD::setValidation(CategoriesRequest::class);
 
         CRUD::field('name')->label('Tên danh mục')->type('text');
         CRUD::field('is_active')->label('Hoạt động')->type('boolean')->default(1);
-
         $this->crud->addField([
             'name'=>'parent_id',
             'label'=>'Danh mục cha',
@@ -130,31 +126,19 @@ class CategoriesCrudController extends CrudController
                 2=>'Không hoạt động'
             ]
         ]);
-
     }
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
     }
 
-//    protected function update(Request $request){
-//        $cate=Categories::find(2);
-//        $cate->name=$request->name;
-//        if($request->parent_id)
-//            $cate->parent_id=$request->parent_id;
-//        $cate->save();
-//    }
-
     protected function show($id){
-//        if(Categories::find($id)->where('parent_id',null))
         $cate=Categories::with('parentRecursive')->where('id',$id)->get();
-
         dd($cate);
         CRUD::addColumn([
             'label'=>'Danh mục cha',
             'name'=>'parent_id',
             'type'=>'model_function',
-//            'function_name'=>'parentRecursive',
             'entity'=>$cate,
             'attribute'=>'name'
         ]);

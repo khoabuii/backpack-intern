@@ -20,7 +20,7 @@ class Posts extends Model
     protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['title','image','content','categories_child'];
+    protected $fillable = ['title','image','content','categories_child','hot_news','special_news'];
     // protected $hidden = [];
     // protected $dates = [];
     protected $translatable=['name','option'];

@@ -70,7 +70,7 @@
                                         <div class="mega-menu-content">
                                             <div class="tab">
                                                 @foreach($cate->childrenRecursive as $cate_child)
-                                                <button class="tablinks active">{{$cate_child->name}}</button>
+                                                    <button class="tablinks active">{{$cate_child->name}}</button>
                                                 @endforeach
                                             </div>
 

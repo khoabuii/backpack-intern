@@ -99,17 +99,34 @@
                         </div><!-- end widget -->
 
                         <div class="widget">
-                            <h2 class="widget-title"> Bài viết nổi bật</h2>
+                            <h2 class="widget-title">Bài viết Đặc biệt</h2>
                             <div class="blog-list-widget">
                                 <div class="list-group">
-                                    @foreach($posts_list as $list)
-                                    <a href="{{url('posts/'.$list->id)}}" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 justify-content-between">
-                                            <img src="{{$list->image}}" alt="" class="img-fluid float-left">
-                                            <h5 class="mb-1">{{ \Illuminate\Support\Str::limit($list->title, 25, $end='...') }}</h5>
-                                            <small>{{$list->created_at}}</small>
-                                        </div>
-                                    </a>
+                                    @foreach($special_posts as $special)
+                                        <a href="{{asset('posts/'.$special->id)}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="{{$special->image}}" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">{{\Illuminate\Support\Str::limit($special->title, 25, $end='...') }}</h5>
+                                                <small>{{$special->created_at}}</small>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div><!-- end blog-list -->
+                        </div><!-- end widget -->
+
+                        <div class="widget">
+                            <h2 class="widget-title">Bài viết HOT</h2>
+                            <div class="blog-list-widget">
+                                <div class="list-group">
+                                    @foreach($hot_posts as $hot)
+                                        <a href="{{asset('posts/'.$hot->id)}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="{{$hot->image}}" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">{{\Illuminate\Support\Str::limit($hot->title, 25, $end='...') }}</h5>
+                                                <small>{{$hot->created_at}}</small>
+                                            </div>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div><!-- end blog-list -->
