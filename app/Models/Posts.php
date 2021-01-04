@@ -30,8 +30,8 @@ class Posts extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function categoriesChild(){
-        return $this->belongsTo(CategoriesChild::class,'category_child','id');
+    public function categories(){
+        return $this->belongsTo(Categories::class,'category','id');
     }
 
     /*

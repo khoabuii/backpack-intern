@@ -12,7 +12,7 @@
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('categories') }}'><i class="la la-database"></i> Danh mục</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('posts') }}'><i class="la la-edit"></i> Bài viết</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('categories_child') }}'><i class="la la-database"></i> Danh mục con</a></li>
+{{--<li class='nav-item'><a class='nav-link' href='{{ backpack_url('categories_child') }}'><i class="la la-database"></i> Danh mục con</a></li>--}}
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('elfinder') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-user'></i> Người dùng</a></li>

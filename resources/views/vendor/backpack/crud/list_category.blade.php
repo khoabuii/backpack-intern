@@ -154,7 +154,7 @@
   <script src="{{ asset('packages/backpack/crud/js/crud.js').'?v='.config('backpack.base.cachebusting_string') }}"></script>
   <script src="{{ asset('packages/backpack/crud/js/form.js').'?v='.config('backpack.base.cachebusting_string') }}"></script>
   <script src="{{ asset('packages/backpack/crud/js/list.js').'?v='.config('backpack.base.cachebusting_string') }}"></script>
-{{--  <script src="{{ asset('vendor/backpack/datatable/dataTables.select.min.js') }}"></script>--}}
+
   <!-- CRUD LIST CONTENT - crud_list_scripts stack -->
   @stack('crud_list_scripts')
 @endsection

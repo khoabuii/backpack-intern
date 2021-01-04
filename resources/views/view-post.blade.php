@@ -14,11 +14,11 @@
                         <div class="blog-title-area text-center">
                             <ol class="breadcrumb hidden-xs-down">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">{{$post->categoriesChild->name}}</a></li>
+{{--                                <li class="breadcrumb-item"><a href="#">{{$post->categoriesChild->name}}</a></li>--}}
                                 <li class="breadcrumb-item active">{{$post->title}}</li>
                             </ol>
 
-                            <span class="color-orange"><a href="" title="">{{$post->categoriesChild->name}}</a></span>
+{{--                            <span class="color-orange"><a href="" title="">{{$post->categoriesChild->name}}</a></span>--}}
 
                             <h3>{{$post->title}}</h3>
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Homepage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\Categories;
-use App\Models\CategoriesChild;
 use App\Models\Comments;
 use App\Models\Posts;
 use App\Models\User;
@@ -20,8 +19,8 @@ class IndexController extends Controller
     //
     public function  __construct()
     {
-        $data['categories']=Categories::all();
-        $data['categories_child']=CategoriesChild::all();
+        $data['categories']=Categories::where('parent_id',null)->get();
+
         view()->share($data);
     }
 

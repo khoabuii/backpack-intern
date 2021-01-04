@@ -19,7 +19,7 @@ Route::group([
     Route::crud('categories', 'CategoriesCrudController');
 
     Route::crud('posts', 'PostsCrudController');
-    Route::crud('categories_child', 'CategoriesChildCrudController');
+//    Route::crud('categories_child', 'CategoriesChildCrudController');
     Route::crud('user', 'UserCrudController');
     Route::get('charts/weekly-users', 'Charts\WeeklyUsersChartController@response')->name('charts.weekly-users.index');
     Route::crud('comments', 'CommentsCrudController');

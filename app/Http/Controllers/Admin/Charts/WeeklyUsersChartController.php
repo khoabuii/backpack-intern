@@ -55,7 +55,6 @@ class WeeklyUsersChartController extends ChartController
                  ->count();
              $tags[] = Tag::whereDate('created_at', today()->subDays($days_backwards))
                  ->count();
-             $categories_child=CategoriesChild::whereDate('created_at',today()->subDay($days_backwards))->count();
          }
 
          $this->chart->dataset('Người dùng', 'line', $users)
@@ -73,8 +72,6 @@ class WeeklyUsersChartController extends ChartController
          $this->chart->dataset('Thẻ', 'line', $tags)
              ->color('rgba(70, 127, 208, 1) ')
              ->backgroundColor('rgba(70, 127, 208, 0.4)');
-         $this->chart->dataset('Danh mục con','line',$tags)
-             ->color('red')
-             ->backgroundColor('green');
+
      }
 }

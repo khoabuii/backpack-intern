@@ -64,8 +64,8 @@ class PostsCrudController extends CrudController
             [
                 'label'     => 'Danh mục', // Table column heading
                 'type'      => 'select',
-                'name'      => 'category_child', // the column that contains the ID of that connected entity;
-                'entity'    => 'categoriesChild', // the method that defines the relationship in your Model
+                'name'      => 'category', // the column that contains the ID of that connected entity;
+                'entity'    => 'categories', // the method that defines the relationship in your Model
                 'attribute' => 'name', // foreign key attribute that is shown to user
             ]);
         /**
@@ -101,8 +101,8 @@ class PostsCrudController extends CrudController
         $this->crud->addField([
             'label' => 'Tên danh mục bài viết',
             'type' => 'select2',
-            'name' => 'category_child',
-            'entity'=>'categoriesChild',
+            'name' => 'category',
+            'entity'=>'categories',
             'attribute'=>'name',
         ]);
     }
@@ -125,7 +125,7 @@ class PostsCrudController extends CrudController
          $post->summary=$request->summary;
          $post->image=$request->image;
          $post->content=$request->content;
-         $post->category_child=$request->category_child;
+         $post->category=$request->category;
          $post->save();
 
          return redirect('/admin/posts');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Categories extends Model
 {
@@ -28,10 +29,30 @@ class Categories extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function categoryChild(){
-        return $this->hasMany(Categories::class,'id');
+    public function posts(){
+        return $this->hasMany(Posts::class,'category','id');
     }
 
+    public function parent(){
+        return $this->belongsTo(Categories::class,'parent_id','id');
+    }
+    public function children(){
+        return $this->hasMany(Categories::class,'parent_id','id');
+    }
+
+    public function childrenRecursive()
+    {
+        return $this->children()->with('childrenRecursive');
+    }
+    public function parentRecursive(){
+        return $this->parent()->with('parentRecursive');
+    }
+
+    public function getCategoryParent() {
+        return '<p>
+
+        </p>';
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

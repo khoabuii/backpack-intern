@@ -69,10 +69,8 @@
                                     <div class="container">
                                         <div class="mega-menu-content">
                                             <div class="tab">
-                                                @foreach($categories_child as $cate_child)
-                                                    @if($cate_child->cate==$cate->id)
+                                                @foreach($cate->childrenRecursive as $cate_child)
                                                 <button class="tablinks active">{{$cate_child->name}}</button>
-                                                    @endif
                                                 @endforeach
                                             </div>
 
@@ -82,19 +80,6 @@
                             </ul>
                         </li>
                         @endforeach
-
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="tech-category-01.html">Gadgets</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="tech-category-02.html">Videos</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="tech-category-03.html">Reviews</a>--}}
-{{--                        </li>--}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="tech-contact.html">Contact Us</a>
-                        </li>
                     </ul>
                     <ul class="navbar-nav mr-2">
                         @if(!Auth::check())

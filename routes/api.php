@@ -33,7 +33,7 @@ Route::group(['prefix'=>'auth'],function(){
 
 
         //categories child
-        Route::apiResource('categories_child','Api\CategoriesChildController');
+//        Route::apiResource('categories_child','Api\CategoriesChildController');
 
         // posts
         Route::apiResource('posts','Api\PostsController');

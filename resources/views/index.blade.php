@@ -28,8 +28,8 @@
                             <div class="blog-meta big-meta col-md-8">
                                 <h4><a href="{{url('/posts/'.$post->id.'')}}" title="">{{$post->title}}</a></h4>
                                 <p> {{$post->summary}}</p>
-                                <small class="firstsmall"><a class="bg-aqua" href="{{url('/category')}}" title="">{{$post->categoriesChild->category->name}}</a></small>
-                                <small class="firstsmall"><a class="bg-orange" href="{{url('/category')}}" title="">{{$post->categoriesChild->name}}</a></small>
+                                <small class="firstsmall"><a class="bg-aqua" href="{{url('/category')}}" title="">{{$post->categories->parent->name}}</a></small>
+                                <small class="firstsmall"><a class="bg-orange" href="{{url('/category')}}" title="">{{$post->categories->name}}</a></small>
                                 <small><a href="#" title="">by Admin</a></small>
                                 <small><a href="#" title=""><i class="fa fa-eye"></i> víews</a></small>
                             </div><!-- end meta -->
